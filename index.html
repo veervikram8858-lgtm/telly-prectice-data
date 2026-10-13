@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GST NOC Generator | Create No Objection Certificate for GST Registration</title>
+  <meta name="description" content="Generate 100% compliant, legally drafted No Objection Certificates (NOC) and Consent Letters for GST Registration (Form GST REG-01). Instant PDF, Word export & Print.">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen bg-slate-100 flex flex-col antialiased text-slate-800">
+
+  <!-- TOP NAVIGATION HEADER -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-700 to-indigo-500 flex items-center justify-center text-white shadow-md shadow-indigo-200">
+          <i data-lucide="file-check-2" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-bold text-lg text-slate-900 leading-tight">GST NOC Studio</h1>
+            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
+              Form GST REG-01
+            </span>
+          </div>
+          <p class="text-xs text-slate-500">Legal No Objection & Consent Letter Builder</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
+        <button id="btn-sample" type="button" class="inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-lg transition-colors">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span class="hidden sm:inline">Load Sample</span>
+          <span class="sm:hidden">Sample</span>
+        </button>
+
+        <button id="btn-clear" type="button" class="inline-flex items-center space-x-1 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:text-red-600 hover:bg-red-50 border border-transparent rounded-lg transition-colors" title="Clear all fields">
+          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          <span class="hidden md:inline">Reset</span>
+        </button>
+
+        <button id="btn-guidelines" type="button" class="inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-lg transition-colors">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+          <span class="hidden md:inline">GST Portal Checklist</span>
+          <span class="md:hidden">Checklist</span>
+        </button>
+
+        <button id="btn-print-top" type="button" class="inline-flex items-center space-x-2 px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm shadow-indigo-300 rounded-lg transition-colors">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span>Print / Save PDF</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- PRIVACY / SECURITY BANNER -->
+  <div class="bg-indigo-900 text-indigo-100 py-1.5 px-4 text-center text-xs flex items-center justify-center space-x-2 no-print">
+    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+    <span><strong>100% Client-Side Privacy:</strong> Your sensitive details (PAN, Aadhaar, Address) never leave your device. All data is processed locally in your browser.</span>
+  </div>
+
+  <!-- MAIN APPLICATION LAYOUT -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- LEFT COLUMN: FORM INPUTS (5 Cols on large screens) -->
+      <div id="form-sidebar" class="lg:col-span-5 space-y-5">
+        
+        <!-- STEP 1: TEMPLATE SELECTOR -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+            1. Select NOC / Consent Format
+          </label>
+          <div class="space-y-2">
+            <label class="flex items-start p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/50">
+              <input type="radio" name="noc_template" value="family" checked class="mt-0.5 text-indigo-600 focus:ring-indigo-500">
+              <div class="ml-3">
+                <span class="block text-sm font-semibold text-slate-900">Parental / Family Consent Letter</span>
+                <span class="block text-xs text-slate-500">Father, Mother, Spouse, or Relative owns premises; rent-free business use.</span>
+              </div>
+            </label>
+
+            <label class="flex items-start p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/50">
+              <input type="radio" name="noc_template" value="landlord" class="mt-0.5 text-indigo-600 focus:ring-indigo-500">
+              <div class="ml-3">
+                <span class="block text-sm font-semibold text-slate-900">Landlord / Third-Party Property Owner NOC</span>
+                <span class="block text-xs text-slate-500">Commercial or residential landlord granting permission for tenant GST registration.</span>
+              </div>
+            </label>
+
+            <label class="flex items-start p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/50">
+              <input type="radio" name="noc_template" value="director" class="mt-0.5 text-indigo-600 focus:ring-indigo-500">
+              <div class="ml-3">
+                <span class="block text-sm font-semibold text-slate-900">Director / Partner Owned Property NOC</span>
+                <span class="block text-xs text-slate-500">Property owned individually by a Director/Partner provided to Pvt Ltd, LLP, or Firm.</span>
+              </div>
+            </label>
+
+            <label class="flex items-start p-2.5 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition-colors has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50/50">
+              <input type="radio" name="noc_template" value="shared" class="mt-0.5 text-indigo-600 focus:ring-indigo-500">
+              <div class="ml-3">
+                <span class="block text-sm font-semibold text-slate-900">Shared Office / Co-working NOC</span>
+                <span class="block text-xs text-slate-500">Shared premises or desk space with consent from primary occupant/owner.</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 2: PROPERTY OWNER / LANDLORD DETAILS -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center space-x-1.5">
+              <i data-lucide="user-check" class="w-4 h-4 text-indigo-600"></i>
+              <span>2. Property Owner / Granter Details</span>
+            </label>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Owner Full Name (as per Electricity Bill/Registry) *</label>
+              <input type="text" id="owner_name" placeholder="e.g. Ramesh Kumar Sharma" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Father's / Husband's Name</label>
+                <input type="text" id="owner_father" placeholder="e.g. Late Shri Om Prakash Sharma" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Relationship with Applicant</label>
+                <select id="relationship_type" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                  <option value="Father">Father</option>
+                  <option value="Mother">Mother</option>
+                  <option value="Spouse / Husband">Spouse / Husband</option>
+                  <option value="Spouse / Wife">Spouse / Wife</option>
+                  <option value="Brother">Brother</option>
+                  <option value="Landlord / Property Owner">Landlord / Owner</option>
+                  <option value="Director of the Company">Director of the Company</option>
+                  <option value="Partner of the Firm">Partner of the Firm</option>
+                  <option value="Relative / Family Member">Relative / Family Member</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Owner ID Proof Type</label>
+                <select id="owner_id_type" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                  <option value="Aadhaar Card">Aadhaar Card</option>
+                  <option value="PAN Card">PAN Card</option>
+                  <option value="Voter ID Card">Voter ID Card</option>
+                  <option value="Passport">Passport</option>
+                  <option value="None">Do not mention ID</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Owner ID Number (Optional)</label>
+                <input type="text" id="owner_id_num" placeholder="e.g. XXXX XXXX 4589 or ABCDE1234F" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Owner Residential Address</label>
+              <textarea id="owner_address" rows="2" placeholder="e.g. Flat No. 402, Royal Residency, Sector 14, Gurugram, Haryana - 122001" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: BUSINESS & APPLICANT DETAILS -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center space-x-1.5">
+              <i data-lucide="building-2" class="w-4 h-4 text-indigo-600"></i>
+              <span>3. Business & Applicant Details</span>
+            </label>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Business Trade Name / Legal Entity Name *</label>
+              <input type="text" id="business_name" placeholder="e.g. M/s Apex Tech Solutions" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Applicant / Authorized Name *</label>
+                <input type="text" id="applicant_name" placeholder="e.g. Vikas Sharma" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Applicant Designation</label>
+                <select id="applicant_designation" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                  <option value="Proprietor">Proprietor</option>
+                  <option value="Managing Director">Managing Director</option>
+                  <option value="Director">Director</option>
+                  <option value="Managing Partner">Managing Partner</option>
+                  <option value="Partner">Partner</option>
+                  <option value="Authorized Signatory">Authorized Signatory</option>
+                  <option value="Karta">Karta (HUF)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Constitution of Business</label>
+                <select id="business_constitution" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                  <option value="Sole Proprietorship">Sole Proprietorship</option>
+                  <option value="Private Limited Company">Private Limited Company</option>
+                  <option value="Partnership Firm">Partnership Firm</option>
+                  <option value="Limited Liability Partnership (LLP)">LLP</option>
+                  <option value="One Person Company (OPC)">One Person Company (OPC)</option>
+                  <option value="Hindu Undivided Family (HUF)">HUF</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Applicant Father's Name</label>
+                <input type="text" id="applicant_father" placeholder="e.g. Ramesh Kumar Sharma" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Nature of Business Activities</label>
+              <input type="text" id="business_activity" placeholder="e.g. IT Consulting, Software Services & Trading of Goods" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: PREMISES / PLACE OF BUSINESS DETAILS -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center space-x-1.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-indigo-600"></i>
+              <span>4. Registered Premises (Place of Business)</span>
+            </label>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Flat / Shop / Office / Plot Number *</label>
+              <input type="text" id="property_number" placeholder="e.g. Shop No. 12, Ground Floor" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Building / Complex / Society Name</label>
+              <input type="text" id="property_building" placeholder="e.g. City Centre Commercial Complex" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Street / Road / Locality / Sector *</label>
+              <input type="text" id="property_locality" placeholder="e.g. M.G. Road, Sector 29" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">City / Town *</label>
+                <input type="text" id="property_city" placeholder="e.g. Gurugram" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">State *</label>
+                <select id="property_state" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                  <option value="Haryana">Haryana</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="West Bengal">West Bengal</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Jharkhand">Jharkhand</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Other">Other State / UT</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">PIN Code *</label>
+                <input type="text" id="property_pincode" maxlength="6" placeholder="e.g. 122002" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              </div>
+            </div>
+
+            <!-- Electricity Bill Details (Key for GST compliance) -->
+            <div class="pt-2 border-t border-slate-100">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-medium text-slate-700 mb-1">
+                    Electricity CA / Consumer / Meter No.
+                    <span class="text-indigo-600 font-bold" title="Crucial for GST officer verification">*</span>
+                  </label>
+                  <input type="text" id="electricity_meter_no" placeholder="e.g. 100456789012" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-medium text-slate-700 mb-1">Electricity Provider / Board Name</label>
+                  <input type="text" id="electricity_board" placeholder="e.g. DHBVN / BSES / BESCOM" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-500 mt-1">
+                Tip: Matching this with your uploaded Electricity Bill helps prevent queries in Form GST REG-03.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: TERMS, EXECUTION & PRINT SETTINGS -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
+          <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+            <label class="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center space-x-1.5">
+              <i data-lucide="sliders" class="w-4 h-4 text-indigo-600"></i>
+              <span>5. Terms & Execution Settings</span>
+            </label>
+          </div>
+
+          <div class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Commercial Terms</label>
+                <select id="rent_nature" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                  <option value="free">Purely Rent-Free (Consent Basis)</option>
+                  <option value="nominal">Nominal Rent / Mutual Understanding</option>
+                  <option value="rented">Under Rent Agreement / Lease</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Premises Type</label>
+                <select id="premises_use" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                  <option value="Principal Place of Business">Principal Place of Business</option>
+                  <option value="Additional Place of Business">Additional Place of Business</option>
+                  <option value="Branch Office / Warehouse">Branch Office / Warehouse</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Date of Execution</label>
+                <input type="date" id="execution_date" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Place of Execution (City)</label>
+                <input type="text" id="execution_place" placeholder="e.g. Gurugram" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              </div>
+            </div>
+
+            <!-- Toggles & Stamp paper offset -->
+            <div class="pt-3 border-t border-slate-100 space-y-3">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Stamp Paper Top Spacing (Offset)</label>
+                <select id="stamp_offset" class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                  <option value="0">Plain A4 Paper (No Offset)</option>
+                  <option value="50">50 mm (Standard ₹10 / ₹50 Stamp Paper)</option>
+                  <option value="80">80 mm (High ₹100 Stamp Paper)</option>
+                  <option value="110">110 mm (Custom Letterhead / Heavy Stamp)</option>
+                </select>
+                <p class="text-[11px] text-slate-500 mt-1">Leaves empty room at the top so you can feed non-judicial stamp paper directly into your printer!</p>
+              </div>
+
+              <div class="flex items-center justify-between py-1">
+                <span class="text-xs font-medium text-slate-700">Include Witness Section</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="toggle_witnesses" checked class="sr-only peer">
+                  <div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                </label>
+              </div>
+
+              <div class="flex items-center justify-between py-1">
+                <span class="text-xs font-medium text-slate-700">Include Solemn Verification Clause</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                  <input type="checkbox" id="toggle_verification" checked class="sr-only peer">
+                  <div class="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600"></div>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN: LIVE INTERACTIVE PREVIEW (7 Cols on large screens) -->
+      <div class="lg:col-span-7 space-y-4">
+        
+        <!-- ACTION TOOLBAR -->
+        <div id="action-toolbar" class="bg-white rounded-xl shadow-sm border border-slate-200 p-3 flex flex-wrap items-center justify-between gap-2 sticky top-20 z-20">
+          <div class="flex items-center space-x-1.5 text-xs font-medium text-slate-600">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Live Document Preview</span>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <button id="btn-copy" type="button" class="inline-flex items-center space-x-1 px-3 py-1.5 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors">
+              <i data-lucide="copy" class="w-3.5 h-3.5 text-slate-500"></i>
+              <span>Copy Text</span>
+            </button>
+
+            <button id="btn-word" type="button" class="inline-flex items-center space-x-1 px-3 py-1.5 text-xs font-medium text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-lg transition-colors">
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span>Export Word (.doc)</span>
+            </button>
+
+            <button id="btn-print" type="button" class="inline-flex items-center space-x-1 px-3.5 py-1.5 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 shadow-sm rounded-lg transition-colors">
+              <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+              <span>Print / PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- A4 DOCUMENT PAPER WRAPPER -->
+        <div id="preview-container" class="flex justify-center">
+          <div id="noc-paper" class="a4-paper p-8 sm:p-12 text-slate-900 shadow-md">
+            
+            <!-- Dynamic Stamp Spacing Indicator -->
+            <div id="stamp-spacer" class="stamp-space-indicator hidden" style="height: 0px;"></div>
+
+            <!-- DOCUMENT BODY -->
+            <div id="document-content" class="legal-text">
+              <!-- Content rendered dynamically via JS -->
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PRO TIPS / COMPLIANCE HINTS CARD -->
+        <div id="tips-card" class="bg-amber-50 rounded-xl border border-amber-200 p-4 text-xs text-amber-900 space-y-2 no-print">
+          <div class="flex items-center space-x-2 font-bold text-amber-950">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i>
+            <span>Essential Tips to Avoid GST Clarification Notice (Form GST REG-03):</span>
+          </div>
+          <ul class="list-disc list-inside space-y-1 text-amber-800 ml-1">
+            <li><strong>Match Address Exactly:</strong> The address in the NOC must match word-for-word with the uploaded Electricity Bill / Property Tax receipt.</li>
+            <li><strong>Recent Utility Bill:</strong> Ensure the electricity bill is not older than <strong>2 months</strong>.</li>
+            <li><strong>Signatures:</strong> Print this NOC, have the property owner sign with blue ink, and scan it clearly along with the owner's self-attested ID proof (Aadhaar/PAN).</li>
+            <li><strong>Upload Format:</strong> Upload as PDF or JPEG under 500 KB in the GST Portal's <em>"Consent"</em> or <em>"Rented"</em> category.</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500 no-print">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="font-semibold text-slate-700">GST NOC Studio</span>
+        <span>•</span>
+        <span>Empowering Indian Businesses & Tax Consultants</span>
+      </div>
+      <div>
+        Designed for Central Goods & Services Tax (CGST) & State GST compliance. Free & Open-source tool.
+      </div>
+    </div>
+  </footer>
+
+  <!-- GST GUIDELINES & CHECKLIST MODAL -->
+  <div id="guidelines-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-5 max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center space-x-2 text-indigo-700">
+          <i data-lucide="book-open-check" class="w-6 h-6"></i>
+          <h2 class="text-lg font-bold text-slate-900">GST Registration NOC Guidelines & Checklist</h2>
+        </div>
+        <button id="btn-close-modal" class="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs sm:text-sm text-slate-700 leading-relaxed">
+        
+        <div class="bg-indigo-50/70 p-4 rounded-xl border border-indigo-100">
+          <h3 class="font-semibold text-indigo-950 mb-1 flex items-center space-x-1.5">
+            <i data-lucide="file-question" class="w-4 h-4 text-indigo-600"></i>
+            <span>When is a No Objection Certificate (NOC) Required?</span>
+          </h3>
+          <p class="text-slate-600 text-xs leading-5">
+            Under Section 25 of the CGST Act, 2017 read with Rule 8, you must prove possession of your Principal Place of Business. When the premises is:
+          </p>
+          <ul class="list-disc list-inside mt-1.5 text-xs text-slate-600 space-y-0.5">
+            <li>Owned by parents, spouse, or siblings (Rent-free consent basis).</li>
+            <li>Owned by a Director/Partner who is allowing the Company/LLP to use it.</li>
+            <li>Rented/leased without a registered lease deed, or alongside a rent agreement.</li>
+            <li>Shared office space / Co-working desk.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">Documents to Upload Together on the GST Portal:</h3>
+          <ol class="list-decimal list-inside space-y-2 text-xs text-slate-600">
+            <li>
+              <strong class="text-slate-800">Duly Signed NOC:</strong> The owner must sign at the bottom.
+            </li>
+            <li>
+              <strong class="text-slate-800">Ownership Proof / Utility Bill:</strong> Upload a recent Electricity Bill, Municipal Property Tax Receipt, or Index-II / Registry copy in the owner's name (not older than 60 days).
+            </li>
+            <li>
+              <strong class="text-slate-800">Owner's Identity Proof:</strong> Self-attested copy of the owner's Aadhaar Card or PAN card to establish signature verification.
+            </li>
+            <li>
+              <strong class="text-slate-800">Proof of Relationship (if family consent):</strong> If applying under parental consent, having matching surnames or address on the applicant's Aadhaar helps expedite approval without queries.
+            </li>
+          </ol>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">Do you need Non-Judicial Stamp Paper?</h3>
+          <p class="text-xs text-slate-600 leading-5">
+            - <strong>For Parental / Family Consent:</strong> Plain white A4 paper is accepted in almost all states (e.g., Delhi, Haryana, UP, Karnataka).<br>
+            - <strong>For Commercial / Third-Party Landlord:</strong> While plain paper often works, printing on a <strong>₹10, ₹50, or ₹100 non-judicial stamp paper</strong> (or notarizing it) is strongly recommended in states like Maharashtra, Gujarat, and Rajasthan to avoid queries under Form GST REG-03.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-slate-900 mb-2">GST Portal Upload Specs:</h3>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+              <span class="block font-semibold text-slate-800">Allowed Formats</span>
+              <span class="text-slate-600">PDF or JPEG</span>
+            </div>
+            <div class="p-3 rounded-lg bg-slate-50 border border-slate-200">
+              <span class="block font-semibold text-slate-800">Max File Size</span>
+              <span class="text-slate-600">100 KB to 1 MB (PDF recommended)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex justify-end pt-3 border-t border-slate-100">
+        <button id="btn-close-modal-bottom" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-lg transition-colors">
+          Got it, close guide
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white text-xs font-medium px-4 py-3 rounded-xl shadow-xl flex items-center space-x-2 border border-slate-700">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- APP SCRIPT -->
+  <script src="app.js"></script>
+</body>
+</html>
